@@ -1,7 +1,11 @@
+name: Bump Homebrew formula
+
 on:
-    push:
-      tags: 'v*'
-  
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
   jobs:
     homebrew:
       name: Bump Homebrew formula
