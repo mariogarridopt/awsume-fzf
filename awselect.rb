@@ -2,7 +2,7 @@ class Awselect < Formula
   desc "Plugin that enables fzf seach on awsume"
   homepage "https://github.com/mariogarridopt/awsume-fzf"
   url "https://github.com/mariogarridopt/homebrew-awsume-fzf/archive/refs/tags/v1.1.tar.gz"
-  sha256 "ac704c73d9dd41c51a0c2b3e3ce0beecfc52a19f88a3fb4e4c0d35398fcf4ee3"
+  sha256 "727f2ae516070a7fdde15043065a6099bf195ff7751c507fa205650e64ee68de"
   license :public_domain
 
   depends_on "awscli"
