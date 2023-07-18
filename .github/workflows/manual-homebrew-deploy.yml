@@ -1,21 +1,28 @@
-name: Manuealy Bump Homebrew formula
+name: Manual Update on Homebrew formula
+
 
 on:
-    workflow_dispatch:
-      inputs:
-        tag-name:
-          description: 'The git tag name to bump the formula to'
-          required: true
-  
-  jobs:
-    homebrew:
-      name: Bump Homebrew formula
-      runs-on: ubuntu-latest
-      steps:
-        - uses: mislav/bump-homebrew-formula-action@v2
-          with:
-            formula-name: awselect
-            tag-name: ${{ github.event.inputs.tag-name }}
-            download-url: https://github.com/mariogarridopt/homebrew-awsume-fzf/archive/refs/tags/${{ github.event.inputs.tag-name }}.tar.gz
-          env:
-            COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
+  workflow_dispatch:
+    inputs:
+      tag-name:
+        description: 'The git tag name to bump the formula to'
+        required: true
+
+jobs:
+  homebrew:
+    name: Bump Homebrew formula
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mislav/bump-homebrew-formula-action@v2
+        with:
+          formula-name: awselect
+          formula-path: awselect.rb
+          homebrew-tap: mariogarridopt/awsume-fzf
+          tag-name: ${{ github.event.inputs.tag-name }}
+          download-url: https://github.com/mariogarridopt/homebrew-awsume-fzf/archive/refs/tags/${{ github.event.inputs.tag-name }}.tar.gz
+          commit-message: |
+            {{formulaName}} {{version}}
+
+            Update Formula Version
+        env:
+          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
